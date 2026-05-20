@@ -2,7 +2,7 @@
 
 benefits:
   - free_tao_via_faucet
-  - fast_blocks_6_seconds
+  - fast_blocks_4_per_second
   - isolated_environment
   - full_chain_control
   - easy_debugging
@@ -200,7 +200,7 @@ common_issues:
     - "inspect metagraph for validator_permit"
   
   slow_blocks:
-    - "normal: ~6 seconds per block"
+    - "normal: ~250ms per block"
     - "if stuck: restart docker container"
 
 full_test_script: |
