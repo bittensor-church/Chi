@@ -116,7 +116,7 @@ local_miner_example: |
       return {"status": "ok"}
   
   if __name__ == "__main__":
-      if not subtensor.is_hotkey_registered(2, wallet.hotkey.ss58_address):
+      if not subtensor.is_hotkey_registered(wallet.hotkey.ss58_address, 2):
           subtensor.burned_register(wallet=wallet, netuid=2)
       uvicorn.run(app, host="0.0.0.0", port=8091)
 
@@ -234,7 +234,7 @@ full_test_script: |
       
       # Register neurons
       for w in [miner, validator]:
-          if not subtensor.is_hotkey_registered(2, w.hotkey.ss58_address):
+          if not subtensor.is_hotkey_registered(w.hotkey.ss58_address, 2):
               subtensor.burned_register(wallet=w, netuid=2)
       
       # Stake validator

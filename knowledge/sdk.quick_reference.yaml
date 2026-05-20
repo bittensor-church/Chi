@@ -329,7 +329,7 @@ common_patterns:
   ensure_registered: |
     if not subtensor.is_hotkey_registered(wallet.hotkey.ss58_address, netuid):
         subtensor.burned_register(wallet=wallet, netuid=netuid)
-    uid = subtensor.get_uid_for_hotkey_on_subnet(netuid, wallet.hotkey.ss58_address)
+    uid = subtensor.get_uid_for_hotkey_on_subnet(wallet.hotkey.ss58_address, netuid)
   
   weight_setting_with_rate_limit: |
     params = subtensor.get_subnet_hyperparameters(netuid)
