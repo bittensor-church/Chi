@@ -82,8 +82,13 @@ subnet_creation:
       --no-prompt
     
     # SDK:
-    success, netuid = subtensor.register_network(wallet=owner)
-    # netuid is likely 2, not 1
+    resp = subtensor.register_subnet(wallet=owner)
+    assert resp.success, resp.message
+    # register_subnet does not return the new netuid; look it up via owner_hotkey:
+    owned = [s for s in subtensor.all_subnets()
+             if s.owner_hotkey == owner.hotkey.ss58_address]
+    netuid = max(owned, key=lambda s: s.network_registered_at).netuid
+    # On a fresh localnet, a fresh netuid will be likely 2, not 1
 
   step_2_configure: |
     btcli sudo set --netuid 2 --param tempo --value 10 --wallet.name owner --network local
@@ -228,9 +233,10 @@ full_test_script: |
       for w in [owner, miner, validator]:
           subtensor.faucet(wallet=w)
       
-      # Create subnet
+      # Create subnet (netuid 2 on fresh localnet)
       if not subtensor.subnet_exists(netuid=2):
-          success, netuid = subtensor.register_network(wallet=owner)
+          resp = subtensor.register_subnet(wallet=owner)
+          assert resp.success, resp.message
       
       # Register neurons
       for w in [miner, validator]:
