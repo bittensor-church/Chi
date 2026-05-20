@@ -47,7 +47,6 @@ files_by_category:
 
   guidance:
     design_flow.yaml: "decision tree for mechanism selection"
-    load_order.yaml: "context loading sequences by task"
 
   example_subnets:
     example.affine_sn120.yaml: "Affine - multi-env Pareto scoring for reasoning models"
