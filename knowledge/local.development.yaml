@@ -39,7 +39,7 @@ starting_subtensor:
       --name subtensor-local \
       -p 9944:9944 \
       -p 9933:9933 \
-      opentensor/subtensor-localnet:latest
+      ghcr.io/opentensor/subtensor-localnet:devnet-ready
 
 connection:
   cli: "btcli subnet list --network local"
