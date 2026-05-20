@@ -18,6 +18,9 @@ files_by_category:
     sybil.realities.yaml: "coldkey NOT sybil-proof, UID pressure"
     trust.assumptions.yaml: "what can/cannot be trusted"
 
+  reference:
+    sdk.quick_reference.yaml: "Python SDK — Subtensor, Wallet, Metagraph, Commitments"
+
   specifications:
     bittensor.core.yaml: "network, tokens, participants, keys, metagraph"
     subnet.lifecycle.yaml: "creation, activation, hyperparameters, epochs"
